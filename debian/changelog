@@ -1,5 +1,59 @@
-libdesktop-agnostic (0.0.1-1) experimental; urgency=low
+libdesktop-agnostic (0.3.90-1) experimental; urgency=low
 
-  * Initial release. Closes: #560367
+  * Initial upload on Debian (Closes: #560367)
+  * debian/control:
+   + Update my email address.
+   + Bump Standards-Version to 3.8.4 (no change needed).
+  * debian/rules: Wrap configure flags.
+  * debian/libdesktop-agnostic0.symbols: Add.
+  * Remove 01-awn-fixes.patch.
+  * Add documentation
+   - debian/control: 
+    + Add build-depends on python-sphinx.
+    + Add libdesktop-agnostic-doc binary.
+   - debian/rules: 
+    + Add --enable-docs.
+    + Add sphinx.pyc to the clean target.
+   - libdesktop-agnostic-doc.install: Install the documentation.
+   - libdesktop-agnostic-doc.{links,doc-base}: Add doc-base support.
 
- -- Mark Lee <launchpad-net@lazymalevolence.com>  Sat, 02 Jan 2010 17:52:15 +0100
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Fri, 30 Apr 2010 22:48:28 +0200
+
+libdesktop-agnostic (0.3.90-0ubuntu1) lucid; urgency=low
+
+  * New upstream official release, replacing the patched bzr snapshot. 
+    (LP: #565340)
+   - Fix support on non-english system.
+   - Ship generated .c files to avoid breakage with new Vala versions. 
+  * debian/patches/01-awn-fixes.patch: Merged usptream.
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sun, 18 Apr 2010 01:46:37 +0200
+
+libdesktop-agnostic (0.0.1~bzr383-0ubuntu3) lucid; urgency=low
+
+  *  debian/patches/01-awn-fixes.patch: Various fixes from Michal Hruby
+   - Fix memory leaks
+   - Fix FTBFS
+   - Port to Vala 0.7.10
+   - Fixes for keyfile backend
+   - Minor cleanup
+  * debian/control:
+   - Build-depends on vala >= 0.7.10
+   - Build-depends on gir-repository-dev to retrieve Gdk-2.0.gir.
+  * Switch to dpkg-source 3.0 (quilt) format
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Sat, 20 Mar 2010 12:24:33 +0100
+
+libdesktop-agnostic (0.0.1~bzr383-0ubuntu2) lucid; urgency=low
+
+  * No-change rebuild against libgnome-desktop-2-17. libgnome-desktop-2-11 is
+    NBS.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Mon, 08 Mar 2010 17:11:06 +0100
+
+libdesktop-agnostic (0.0.1~bzr383-0ubuntu1) lucid; urgency=low
+
+  * Initial release. LP: #496307
+  * Pack upstream snapshot without debian directory. 
+
+ -- Julien Lavergne <gilir@ubuntu.com>  Fri, 01 Jan 2010 23:33:31 +0100
