@@ -1,3 +1,9 @@
+libdesktop-agnostic (0.3.90-2) unstable; urgency=low
+
+  * Upload to unstable. 
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Sat, 05 Jun 2010 19:44:09 +0200
+
 libdesktop-agnostic (0.3.90-1) experimental; urgency=low
 
   * Initial upload on Debian (Closes: #560367)
