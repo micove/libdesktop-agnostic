@@ -2,3 +2,4 @@ usr/include
 usr/lib/pkgconfig
 usr/lib/*.so
 usr/share/glade3
+usr/share/vala

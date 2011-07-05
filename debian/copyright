@@ -1,46 +1,52 @@
-X-Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat
-X-Debianized-By: Julien Lavergne <julien.lavergne@gmail.com>
-X-Debianized-Date: Tue, 24 Mar 2009 02:40:32 +0100.
-X-Source-Downloaded-From: https://launchpad.net/libdesktop-agnostic
-X-Upstream-Author: Mark Lee <libdesktop-agnostic@lazymalevolence.com>
+Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=173
+Upstream-Name: libdesktop-agnostic
+Upstream-Contact: Mark Lee <libdesktop-agnostic@lazymalevolence.com>
+Source: https://launchpad.net/libdesktop-agnostic
 
 Files: 	*
 Copyright: 2008-2009 Mark Lee <libdesktop-agnostic@lazymalevolence.com>
+           2010 Michal Hruby <michal.mhr@gmail.com>
 Licence: LGPL 2.1+ (See /usr/share/common-licenses/LGPL-2.1 for complete licence)
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+ 
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+ 
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+  On Debian systems, the full text of the GNU Lesser General Public License
+  version 2.1 can be found in the file '/usr/share/common-licenses/LGPL-2.1'.
 
 Files: 	test/*
 Copyright: 2008-2009 Mark Lee <libdesktop-agnostic@lazymalevolence.com>
 Licence: GPL 2+ (See /usr/share/common-licenses/GPL-2 for complete licence)
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+ 
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA.
+
+  On Debian systems, the full text of the GNU General Public License version 2
+  can be found in the file '/usr/share/common-licenses/GPL-2'.
 
 Files:  waf
 Copyright: Thomas Nagy, 2005-2009
-Licence: other
+Licence: BSD
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -64,6 +70,22 @@ Licence: other
  POSSIBILITY OF SUCH DAMAGE.
 
 Files: 	debian/*
-Copyright: 	2008-2009 Mark Lee <libdesktop-agnostic@lazymalevolence.com>,
-		2008-2009 Julien Lavergne <julien.lavergne@gmail.com>
-Licence: LGPL 2.1+ (See /usr/share/common-licenses/LGPL-2.1 for complete licence)
+Copyright:  2008-2009 Mark Lee <libdesktop-agnostic@lazymalevolence.com>,
+            2008-2010 Julien Lavergne <julien.lavergne@gmail.com>
+Licence: LGPL 2.1+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+ 
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+ 
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+  On Debian systems, the full text of the GNU Lesser General Public License
+  version 2.1 can be found in the file '/usr/share/common-licenses/LGPL-2.1'.

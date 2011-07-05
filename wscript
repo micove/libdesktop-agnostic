@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # encoding: utf-8
 
+import intltool
 import Options
 import os
 import Scripting
@@ -14,12 +15,12 @@ import tempfile
 API_VERSION = '1.0'
 
 # the following two variables are used by the target "waf dist"
-VERSION = '0.3.90'
+VERSION = '0.3.92'
 VNUM = '0.4.0'
 
 CFG_BACKENDS = ','.join(['gconf', 'keyfile'])
 VFS_BACKENDS = ','.join(['gio', 'gnome-vfs', 'thunar-vfs'])
-FDO_BACKENDS = ','.join(['glib', 'gnome'])
+FDO_BACKENDS = ','.join(['glib', 'gnome', 'gio'])
 DISTCHECK_FLAGS = '\t'.join(['--config-backends=%s' % CFG_BACKENDS,
                              '--vfs-backends=%s' % VFS_BACKENDS,
                              '--desktop-entry-backends=%s' % FDO_BACKENDS])
@@ -69,6 +70,8 @@ def set_options(opt):
                    dest='profiling', default=False,
                    help='Enables the library to be built so that it is '
                         'instrumented to measure performance.')
+    opt.add_option('--disable-gi', action='store_true',
+                   dest='no_gi', default=True)
 
 
 def configure(conf):
@@ -87,12 +90,13 @@ def configure(conf):
     conf.env['DEBUG'] = Options.options.debug
     conf.env['EXTRA_WARNINGS'] = Options.options.extra_warnings
     conf.env['PROFILING'] = Options.options.profiling
+    conf.env['INTROSPECTION'] = not Options.options.no_gi
     conf.env['VNUM'] = str(VNUM)
 
     conf.check_tool('gnu_dirs')
-    conf.check_tool('compiler_cc misc vala python')
+    conf.check_tool('compiler_cc intltool misc python vala')
 
-    MIN_VALA_VERSION = (0, 7, 10)
+    MIN_VALA_VERSION = (0, 10, 0)
 
     conf.check_cfg(package='gmodule-2.0', uselib_store='GMODULE',
                    atleast_version='2.6.0', mandatory=True,
@@ -130,12 +134,16 @@ def configure(conf):
         conf.check_cfg(package='gnome-vfs-2.0', uselib_store='GNOME_VFS',
                        atleast_version='2.6.0', mandatory=True,
                        args='--cflags --libs')
+    if 'gio' in conf.env['BACKENDS_DE']:
+        conf.check_cfg(package='gio-unix-2.0', uselib_store='GIO_UNIX',
+                       atleast_version='2.18.0', mandatory=True,
+                       args='--cflags --libs')
     if 'gnome' in conf.env['BACKENDS_DE']:
         conf.check_cfg(package='gnome-desktop-2.0',
                        uselib_store='GNOME_DESKTOP', mandatory=True,
                        args='--cflags --libs')
     # make sure we have the proper Vala version
-    if conf.env['VALAC_VERSION'] != MIN_VALA_VERSION and \
+    if conf.env['VALAC_VERSION'] < MIN_VALA_VERSION and \
         not os.path.isdir(os.path.join(conf.curdir, GEN_SRC_DIR)):
         conf.fatal('''\
 Your Vala compiler version %s is too old. The project requires
@@ -182,6 +190,9 @@ version %d.%d.%d''' % ((str(conf.env['VALAC_VERSION']),) + MIN_VALA_VERSION))
 def build(bld):
     # process subfolders from here
     bld.add_subdirs('libdesktop-agnostic tools tests data python docs')
+
+    if bld.env['INTLTOOL']:
+        bld.add_subdirs('po')
 
     cls = Task.TaskBase.classes['valac']
     old = cls.run

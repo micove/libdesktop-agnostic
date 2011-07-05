@@ -1,3 +1,46 @@
+libdesktop-agnostic (0.3.92-1) unstable; urgency=low
+
+  * New upstream release (Closes: #625669)
+  * debian/control:
+   - Remove gir-repository-dev from build-depends (LP: #677382)
+   - Bump build-depends for valac-0.10 to (>= 0.10.0).
+   - Build-depends on intltool.
+   - Bump build-depends on libglib2.0-dev to (>= 2.18.0) for the fdo gio
+     module. 
+   - Drop gir1.0-desktopagnostic-1.0 binary, support was removed upstream.
+   - Add new libdesktop-agnostic-fdo-gio binary.
+   - Remove vala-desktop-agnostic binary, merged in libdesktop-agnostic-dev.
+   - Add Conflitcs/Replaces to libdesktop-agnostic-dev for
+     vala-desktop-agnostic.
+   - Add new libdesktop-agnostic-data binary for the locales.
+   - Add libdesktop-agnostic-data as a depend of libdesktop-agnostic0.
+   - Drop build-depends on libthunar-vfs-1-dev.
+   - Drop build-depends on python-support.
+   - Bump build-depends on python to >= 2.6.6-3~ for dh_python2 support.
+   - Add DM-Upload-Allowed: yes
+   - Bump Standards-Version to 3.9.2 (no change needed).
+  * debian/rules:
+   - Add gio module to desktop-entry-backends flags.
+   - Stop building the thunar-vfs backend, it's deprecated upstream.
+   - Use --with python2
+   - Passing --no-guessing-versions to dh_python2
+  * debian/*.install
+   - Move vala-desktop-agnostic files to libdesktop-agnostic-dev.
+   - Drop gir1.0-desktopagnostic-1.0, not supported (Closes: #621993, #621736)
+   - Drop libdesktop-agnostic-vfs-thunar.
+   - Add new libdesktop-agnostic-fdo-gio.
+  * debian/*.symbols
+   - Update symbols.
+  * debian/copyright:
+   - Update new copyright holder and years.
+   - Update to newer DEP5 specification.
+  * debian/watch:
+   - Update location.
+  * debian/pycompat:
+   - Remove.
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Wed, 06 Jul 2011 01:51:14 +0200
+
 libdesktop-agnostic (0.3.90-2) unstable; urgency=low
 
   * Upload to unstable. 

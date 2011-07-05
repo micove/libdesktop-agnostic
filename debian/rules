@@ -8,14 +8,14 @@ else
 endif
 
 %:
-	dh $@
+	dh --with python2 $@
 
 override_dh_auto_configure:
 	LINKFLAGS="${LDFLAGS} -Wl,--as-needed" ./waf --nocache configure --prefix=/usr \
 	--enable-debug \
 	--config-backends=gconf,keyfile \
-	--vfs-backends=gio,gnome-vfs,thunar-vfs \
-	--desktop-entry-backends=glib,gnome \
+	--vfs-backends=gio,gnome-vfs \
+	--desktop-entry-backends=glib,gnome,gio \
 	--with-glade \
 	--enable-docs
 	./waf --nocache build
@@ -25,6 +25,9 @@ override_dh_auto_install:
 
 override_dh_strip:
 	dh_strip --dbg-package=libdesktop-agnostic0-dbg
+
+override_dh_python2:
+	dh_python2 --no-guessing-versions
 
 override_dh_auto_clean:
 	rm -rf build sphinx.pyc

@@ -157,6 +157,7 @@ libdesktop-agnostic-ui.so.0 libdesktop-agnostic0 #MINVER#
  desktop_agnostic_ui_color_button_set_color@Base 0.3.90
  desktop_agnostic_ui_color_button_set_da_color@Base 0.3.90
  desktop_agnostic_ui_fixed_table_attach_defaults@Base 0.3.90
+ desktop_agnostic_ui_fixed_table_attach_expand@Base 0.3.92
  desktop_agnostic_ui_fixed_table_attach_fill@Base 0.3.90
  desktop_agnostic_ui_fixed_table_construct@Base 0.3.90
  desktop_agnostic_ui_fixed_table_get_type@Base 0.3.90
@@ -175,10 +176,17 @@ libdesktop-agnostic-ui.so.0 libdesktop-agnostic0 #MINVER#
  desktop_agnostic_ui_icon_chooser_dialog_new@Base 0.3.90
  desktop_agnostic_ui_icon_type_get_type@Base 0.3.90
  desktop_agnostic_ui_launcher_editor_dialog_construct@Base 0.3.90
+ desktop_agnostic_ui_launcher_editor_dialog_get_entry_type_sensitive@Base 0.3.92
  desktop_agnostic_ui_launcher_editor_dialog_get_file@Base 0.3.90
  desktop_agnostic_ui_launcher_editor_dialog_get_output@Base 0.3.90
  desktop_agnostic_ui_launcher_editor_dialog_get_type@Base 0.3.90
  desktop_agnostic_ui_launcher_editor_dialog_new@Base 0.3.90
+ desktop_agnostic_ui_launcher_editor_dialog_set_entry_type_sensitive@Base 0.3.92
+ desktop_agnostic_ui_lazy_pixbuf_renderer_construct@Base 0.3.92
+ desktop_agnostic_ui_lazy_pixbuf_renderer_get_item_ready@Base 0.3.92
+ desktop_agnostic_ui_lazy_pixbuf_renderer_get_type@Base 0.3.92
+ desktop_agnostic_ui_lazy_pixbuf_renderer_new@Base 0.3.92
+ desktop_agnostic_ui_lazy_pixbuf_renderer_set_item_ready@Base 0.3.92
 libdesktop-agnostic-vfs.so.0 libdesktop-agnostic0 #MINVER#
  desktop_agnostic_vfs_access_flags_get_type@Base 0.3.90
  desktop_agnostic_vfs_bookmark_construct@Base 0.3.90
@@ -195,15 +203,19 @@ libdesktop-agnostic-vfs.so.0 libdesktop-agnostic0 #MINVER#
  desktop_agnostic_vfs_file_exists@Base 0.3.90
  desktop_agnostic_vfs_file_get_access_flags@Base 0.3.90
  desktop_agnostic_vfs_file_get_file_type@Base 0.3.90
+ desktop_agnostic_vfs_file_get_icon_names@Base 0.3.92
  desktop_agnostic_vfs_file_get_impl_path@Base 0.3.90
  desktop_agnostic_vfs_file_get_impl_uri@Base 0.3.90
  desktop_agnostic_vfs_file_get_implementation@Base 0.3.90
+ desktop_agnostic_vfs_file_get_mime_type@Base 0.3.92
  desktop_agnostic_vfs_file_get_parent@Base 0.3.90
  desktop_agnostic_vfs_file_get_path@Base 0.3.90
+ desktop_agnostic_vfs_file_get_thumbnail_path@Base 0.3.92
  desktop_agnostic_vfs_file_get_type@Base 0.3.90
  desktop_agnostic_vfs_file_get_uri@Base 0.3.90
  desktop_agnostic_vfs_file_init@Base 0.3.90
  desktop_agnostic_vfs_file_is_executable@Base 0.3.90
+ desktop_agnostic_vfs_file_is_native@Base 0.3.92
  desktop_agnostic_vfs_file_is_readable@Base 0.3.90
  desktop_agnostic_vfs_file_is_writable@Base 0.3.90
  desktop_agnostic_vfs_file_launch@Base 0.3.90
@@ -221,6 +233,7 @@ libdesktop-agnostic-vfs.so.0 libdesktop-agnostic0 #MINVER#
  desktop_agnostic_vfs_file_type_get_type@Base 0.3.90
  desktop_agnostic_vfs_files_from_uri_list@Base 0.3.90
  desktop_agnostic_vfs_get_default@Base 0.3.90
+ desktop_agnostic_vfs_get_icon_names_for_mime_type@Base 0.3.92
  desktop_agnostic_vfs_glob_append@Base 0.3.90
  desktop_agnostic_vfs_glob_construct@Base 0.3.90
  desktop_agnostic_vfs_glob_error_quark@Base 0.3.90

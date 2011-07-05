@@ -4,44 +4,55 @@ Priority: extra
 Maintainer: Julien Lavergne <julien.lavergne@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~),
 # for waf
-               python,
+               python (>= 2.6.6-3~),
 # "real" deps
-               valac (>= 0.7.10),
+               valac-0.10 (>= 0.10.0),
                gobject-introspection (>= 0.6.3),
                libgirepository1.0-dev (>= 0.6.3),
-               gir-repository-dev (>= 0.6.3),
-               libglib2.0-dev (>= 2.16.0),
+               libglib2.0-dev (>= 2.18.0),
                libgtk2.0-dev,
                libgladeui-1-dev,
+               intltool,
 # documentation
                python-sphinx,
 # python bindings
-               python-support (>= 0.6),
                python-dev,
                python-all-dev (>= 2.5),
                python-gobject-dev (>= 2.12),
                python-gtk2-dev (>= 2.12),
 # module deps
                libgconf2-dev,
-               libthunar-vfs-1-dev,
                libdbus-glib-1-dev,
                libgnomevfs2-dev,
                libgnome-desktop-dev,
-Standards-Version: 3.8.4
+Standards-Version: 3.9.2
 Homepage: https://launchpad.net/libdesktop-agnostic
+DM-Upload-Allowed: yes
 
 Package: libdesktop-agnostic0
 Architecture: any
 Depends:    ${shlibs:Depends},
+            libdesktop-agnostic-data (>= ${source:Version}),
             ${misc:Depends}
 Suggests: libdesktop-agnostic-vfs, libdesktop-agnostic-cfg, libdesktop-agnostic-fdo
-Description: A desktop-agnostic library for GLib-based projects
+Description: Desktop-agnostic library for GLib-based projects
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
  GLib-based projects. It is not tied to any one desktop environment, although
  there are desktop-specific modules.
  .
  This package contains the core library.
+
+Package: libdesktop-agnostic-data
+Architecture: any
+Depends: ${misc:Depends}
+Description: Locales and data for libdesktop-agnostic
+ This library provides an extensible configuration API, a unified virtual file
+ system API, and a desktop item editor (all with pluggable backends) for
+ GLib-based projects. It is not tied to any one desktop environment, although
+ there are desktop-specific modules.
+ .
+ This package contains the locales for libdesktop-agnostic.
 
 Package: libdesktop-agnostic-vfs-gnome
 Architecture: any
@@ -56,20 +67,6 @@ Description: GNOME VFS-based VFS module for libdesktop-agnostic
  there are desktop-specific modules.
  .
  This package contains the GNOME VFS module.
-
-Package: libdesktop-agnostic-vfs-thunar
-Architecture: any
-Depends:    ${shlibs:Depends},
-            ${misc:Depends},
-            libdesktop-agnostic0 (= ${binary:Version})
-Provides: libdesktop-agnostic-vfs
-Description: Thunar VFS-based VFS module for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the Thunar VFS module.
 
 Package: libdesktop-agnostic-vfs-gio
 Architecture: any
@@ -141,6 +138,20 @@ Description: GLib-based desktop entry/menu module for libdesktop-agnostic
  .
  This package contains the GLib-based desktop entry/menu module.
 
+Package: libdesktop-agnostic-fdo-gio
+Architecture: any
+Depends:    ${shlibs:Depends},
+            ${misc:Depends},
+            libdesktop-agnostic0 (= ${binary:Version}),
+Provides: libdesktop-agnostic-fdo
+Description: GIO-based desktop entry/menu module for libdesktop-agnostic
+ This library provides an extensible configuration API, a unified virtual file
+ system API, and a desktop item editor (all with pluggable backends) for
+ GLib-based projects. It is not tied to any one desktop environment, although
+ there are desktop-specific modules.
+ .
+ This package contains the GIO-based desktop entry/menu module.
+
 Package: libdesktop-agnostic0-dbg
 Section: debug
 Architecture: any
@@ -164,6 +175,8 @@ Depends: 	${shlibs:Depends},
 		libglib2.0-dev,
 		libgtk2.0-dev
 Suggests:	glade (>= 3) | glade-3
+Replaces: vala-desktop-agnostic
+Conflicts: vala-desktop-agnostic
 Description: Development files for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
@@ -186,27 +199,13 @@ Description: Documentation for libdesktop-agnostic
  .
  This package contains the documentation for the core library.
 
-Package: gir1.0-desktopagnostic-1.0
-Architecture: any
-Depends:    ${shlibs:Depends},
-            ${misc:Depends},
-            libdesktop-agnostic0 (= ${binary:Version})
-Recommends:	gobject-introspection, libdesktop-agnostic-dev
-Description:  GObject Introspection data for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the GObject Introspection data for the core library.
-
 Package: libdesktop-agnostic-bin
 Architecture: any
 Depends:    ${shlibs:Depends},
             ${misc:Depends},
             libdesktop-agnostic0 (= ${binary:Version}),
             libdesktop-agnostic-cfg-gconf
-Description:  Helper applications for libdesktop-agnostic
+Description: Helper applications for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
  GLib-based projects. It is not tied to any one desktop environment, although
@@ -231,16 +230,3 @@ Description: Python bindings for libdesktop-agnostic
  there are desktop-specific modules.
  .
  This package contains the Python bindings for the core library.
-
-Package: vala-desktop-agnostic
-Architecture: all
-Depends:    ${shlibs:Depends},
-            ${misc:Depends},
-            libdesktop-agnostic0 (>= ${source:Version})
-Description: Vala bindings for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the Vala bindings for the core library.
