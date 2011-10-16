@@ -8,13 +8,13 @@ else
 endif
 
 %:
-	dh --with python2 $@
+	dh --with sphinxdoc --with python2 $@
 
 override_dh_auto_configure:
 	LINKFLAGS="${LDFLAGS} -Wl,--as-needed" ./waf --nocache configure --prefix=/usr \
 	--enable-debug \
 	--config-backends=gconf,keyfile \
-	--vfs-backends=gio,gnome-vfs \
+	--vfs-backends=gio \
 	--desktop-entry-backends=glib,gnome,gio \
 	--with-glade \
 	--enable-docs

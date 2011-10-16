@@ -14,16 +14,14 @@ Build-Depends: debhelper (>= 7.0.50~),
                libgladeui-1-dev,
                intltool,
 # documentation
-               python-sphinx,
+               python-sphinx (>= 1.0.7+dfsg),
 # python bindings
-               python-dev,
-               python-all-dev (>= 2.5),
+               python-dev (>= 2.6.6-3~),
                python-gobject-dev (>= 2.12),
                python-gtk2-dev (>= 2.12),
 # module deps
                libgconf2-dev,
                libdbus-glib-1-dev,
-               libgnomevfs2-dev,
                libgnome-desktop-dev,
 Standards-Version: 3.9.2
 Homepage: https://launchpad.net/libdesktop-agnostic
@@ -53,20 +51,6 @@ Description: Locales and data for libdesktop-agnostic
  there are desktop-specific modules.
  .
  This package contains the locales for libdesktop-agnostic.
-
-Package: libdesktop-agnostic-vfs-gnome
-Architecture: any
-Depends:    ${shlibs:Depends},
-            ${misc:Depends},
-            libdesktop-agnostic0 (= ${binary:Version})
-Provides: libdesktop-agnostic-vfs
-Description: GNOME VFS-based VFS module for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the GNOME VFS module.
 
 Package: libdesktop-agnostic-vfs-gio
 Architecture: any
@@ -190,7 +174,7 @@ Architecture: all
 Section: doc
 Depends:    ${shlibs:Depends},
             ${misc:Depends},
-            libjs-jquery
+            ${sphinxdoc:Depends}
 Description: Documentation for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
@@ -221,7 +205,6 @@ Depends:    ${shlibs:Depends},
             ${misc:Depends},
             libdesktop-agnostic0 (>= ${binary:Version}),
             ${python:Depends}
-Provides: ${python:Provides}
 XB-Python-Version: ${python:Versions}
 Description: Python bindings for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file

@@ -1,3 +1,25 @@
+libdesktop-agnostic (0.3.92-2) unstable; urgency=low
+
+  * libdesktop-agnostic-vfs-gnome.install:
+   - Remove, doesn't build and gnome-vfs is deprecated upstream.
+  * debian/control:
+   - Drop build-depends on python-all-dev.
+   - Bump build-depends on python-dev to >= 2.6.6-3~ for dh_python2.
+   - Drop Provides: ${python:Provides}.
+   - Update build-depends on python-sphinx for dh_sphinxdoc support.
+   - Use ${sphinxdoc:Depends}, instead of depends on libjs-jquery.
+   - Remove build-depends on libgnomevfs2-dev.
+   - Remove libdesktop-agnostic-vfs-gnome binary.
+  * debian/libdesktop-agnostic-doc.links:
+   - Remove workaround for jquery, handle by python-sphinx.
+  * debian/rules:
+   - Use --with sphinxdoc.
+   - Remove gnome-vfs as vfs-backends.
+  * debian/copyright:
+   - Fix format errors.
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Mon, 17 Oct 2011 00:25:37 +0200
+
 libdesktop-agnostic (0.3.92-1) unstable; urgency=low
 
   * New upstream release (Closes: #625669)
