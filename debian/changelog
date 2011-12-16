@@ -1,3 +1,12 @@
+libdesktop-agnostic (0.3.92-3) unstable; urgency=medium
+
+  * Urgency set to medium to fix RC bug.
+  * debian/rules:
+   - Fix FTBFS with dh_sphinxdoc. Thanks Jakub Wilk for the patch.
+     Closes: #647233.
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Fri, 16 Dec 2011 16:38:10 +0100
+
 libdesktop-agnostic (0.3.92-2) unstable; urgency=low
 
   * libdesktop-agnostic-vfs-gnome.install:
