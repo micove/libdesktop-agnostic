@@ -1,3 +1,17 @@
+libdesktop-agnostic (0.3.92+dfsg-1) unstable; urgency=low
+
+  * Repacking to include source of waf (Closes: #654483)
+  * debian/control:
+   - Bump build-depends on valac-0.14, and add an alternative to valac
+     (Closes: #663297)
+   - Update to Standards-Version: 3.9.3, no change needed.
+  * debian/copyright:
+   - Update to official version from dep5.
+  * debian/watch:
+   - Mangle dfsg in version.
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Sun, 25 Mar 2012 13:03:52 +0200
+
 libdesktop-agnostic (0.3.92-3) unstable; urgency=medium
 
   * Urgency set to medium to fix RC bug.
