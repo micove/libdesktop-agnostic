@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+defsdir=@datarootdir@/pygtk/2.0/defs
+vapidir=@datarootdir@/vala/vapi
+
+Name: libdesktop-agnostic
+Description: GLib-based desktop-agnostic library
+Version: @VERSION@
+Libs: -L${libdir} -ldesktop-agnostic -ldesktop-agnostic-vfs -ldesktop-agnostic-cfg -ldesktop-agnostic-fdo -ldesktop-agnostic-ui
+Cflags: -I${includedir}/libdesktop-agnostic-@API_VERSION@
+Requires: glib-2.0 gmodule-2.0 gdk-2.0

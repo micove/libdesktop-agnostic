@@ -1,0 +1,443 @@
+%%
+headers
+/*
+ * Copyright (c) 2009 Mark Lee <libdesktop-agnostic@lazymalevolence.com>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+*/
+
+#ifdef HAVE_BUILD_CONFIG_H
+#include "build-config.h"
+#endif
+#include <pygobject.h>
+#include <libdesktop-agnostic/config.h>
+%%
+modulename desktopagnostic.config
+%%
+import gobject.GObject as PyGObject_Type
+%%
+ignore-glob *_get_type
+%%
+override desktop_agnostic_config_client_get_value kwargs
+static PyObject *
+_wrap_desktop_agnostic_config_client_get_value (PyGObject *self, PyObject *args,
+                                                PyObject *kwargs)
+{
+  static char *kwlist[] = { "group", "key", NULL };
+  char *group, *key;
+  PyObject *ret;
+  GError *error = NULL;
+  GValue value = { 0, };
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "ss:desktopagnostic.config.Client.get_value",
+                                    kwlist, &group, &key))
+  {
+    return NULL;
+  }
+
+  desktop_agnostic_config_client_get_value (DESKTOP_AGNOSTIC_CONFIG_CLIENT (self->obj),
+                                            group, key, &value, &error);
+
+  if (pyg_error_check (&error))
+  {
+    return NULL;
+  }
+
+  ret = pyg_value_as_pyobject (&value, TRUE);
+  g_value_unset (&value);
+
+  return ret;
+}
+%%
+override desktop_agnostic_config_client_set_value kwargs
+static PyObject *
+_wrap_desktop_agnostic_config_client_set_value (PyGObject *self, PyObject *args,
+                                                PyObject *kwargs)
+{
+  static char *kwlist[] = { "group", "key", "value", NULL };
+  char *group, *key;
+  PyObject *obj;
+  GType type;
+  GValue value = { 0, };
+  GError *error = NULL;
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "ssO:desktopagnostic.config.Client.set_value",
+                                    kwlist, &group, &key, &obj))
+  {
+    return NULL;
+  }
+
+  if (PySequence_Check (obj) && !PyString_Check (obj) &&
+      !PyUnicode_Check (obj))
+  {
+    type = G_TYPE_VALUE_ARRAY;
+  }
+  else
+  {
+    type = pyg_type_from_object ((PyObject *)obj->ob_type);
+  }
+
+  if (type == G_TYPE_INVALID)
+  {
+    return NULL;
+  }
+
+  g_value_init (&value, type);
+
+  if (pyg_value_from_pyobject (&value, obj) != 0)
+  {
+    return NULL;
+  }
+
+  desktop_agnostic_config_client_set_value (DESKTOP_AGNOSTIC_CONFIG_CLIENT (self->obj),
+                                            group, key, &value, &error);
+
+  if (pyg_error_check (&error))
+  {
+    return NULL;
+  }
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override desktop_agnostic_config_client_get_list kwargs
+static PyObject *
+_wrap_desktop_agnostic_config_client_get_list (PyGObject *self, PyObject *args,
+                                               PyObject *kwargs)
+{
+  static char *kwlist[] = { "group", "key", NULL };
+  char *group, *key;
+  PyObject *ret;
+  guint i;
+  GError *error = NULL;
+  GValueArray *array;
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "ss:desktopagnostic.config.Client.get_list",
+                                    kwlist, &group, &key))
+  {
+    return NULL;
+  }
+
+  array = desktop_agnostic_config_client_get_list (DESKTOP_AGNOSTIC_CONFIG_CLIENT (self->obj),
+                                                   group, key, &error);
+
+  if (pyg_error_check (&error))
+  {
+    return NULL;
+  }
+
+  ret = PyList_New (array->n_values);
+  for (i = 0; i < array->n_values; i++)
+  {
+    PyList_SET_ITEM (ret, i, pyg_value_as_pyobject (array->values + i, TRUE));
+  }
+
+  g_value_array_free (array);
+
+  return ret;
+}
+%%
+override desktop_agnostic_config_client_set_list kwargs
+static PyObject *
+_wrap_desktop_agnostic_config_client_set_list (PyGObject *self, PyObject *args,
+                                               PyObject *kwargs)
+{
+  static char *kwlist[] = { "group", "key", "list", NULL };
+  char *group, *key;
+  PyObject *obj;
+  GValue value = { 0, };
+  GValueArray *array;
+  GError *error = NULL;
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "ssO!:desktopagnostic.config.Client.set_list",
+                                    kwlist, &group, &key, &PyList_Type, &obj))
+  {
+    return NULL;
+  }
+
+  g_value_init (&value, G_TYPE_VALUE_ARRAY);
+  if (pyg_value_from_pyobject (&value, obj) != 0)
+  {
+    return NULL;
+  }
+
+  array = g_value_get_boxed (&value);
+
+  desktop_agnostic_config_client_set_list (DESKTOP_AGNOSTIC_CONFIG_CLIENT (self->obj),
+                                           group, key, array, &error);
+
+  g_value_unset (&value);
+
+  if (pyg_error_check (&error))
+  {
+    return NULL;
+  }
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override desktop_agnostic_config_client_notify_add kwargs
+
+typedef struct _NotifyData
+{
+  gchar *group;
+  gchar *key;
+  gpointer data_tuple;
+} NotifyData;
+
+static GList *g_lda_notifications = NULL;
+
+NotifyData *
+pydesktopagnostic_notifications_find (const gchar *group,
+                                      const gchar *key,
+                                      PyObject *callback,
+                                      PyObject *extra)
+{
+  GList *it;
+  for (it = g_lda_notifications; it; it = it->next)
+  {
+    NotifyData *data;
+    PyObject *tuple;
+
+    data = it->data;
+    tuple = data->data_tuple;
+    if (strcmp (group, data->group) || strcmp (key, data->key))
+    {
+      continue;
+    }
+
+    if (extra)
+    {
+      PyObject *t_cb, *t_extra;
+      int comp_result;
+
+      if (PyTuple_Size (tuple) <= 1)
+      {
+        continue;
+      }
+
+      t_cb = PyTuple_GetItem (tuple, 0);
+      t_extra = PyTuple_GetItem (tuple, 1);
+
+      if (PyObject_Cmp (t_cb, callback, &comp_result) == -1)
+      {
+        continue;
+      }
+      if (comp_result != 0)
+      {
+        continue;
+      }
+
+      // if we're here the callback is ok
+      if (PyObject_Cmp (t_extra, extra, &comp_result) == -1)
+      {
+        continue;
+      }
+      if (comp_result == 0)
+      {
+        return data;
+      }
+    }
+    else // no extra param
+    {
+      PyObject *t_cb;
+      int comp_result;
+
+      if (PyTuple_Size (tuple) != 1)
+      {
+        continue;
+      }
+
+      t_cb = PyTuple_GetItem (tuple, 0);
+
+      if (PyObject_Cmp (t_cb, callback, &comp_result) == -1)
+      {
+        continue;
+      }
+      if (comp_result == 0)
+      {
+        return data;
+      }
+    }
+  }
+
+  return NULL;
+}
+
+void
+pydesktopagnostic_config_client_notify_add (const gchar *group,
+                                            const gchar *key,
+                                            const GValue *value,
+                                            gpointer user_data)
+{
+  PyObject *tuple;
+  PyObject *func;
+  PyObject *userdata = NULL;
+  PyObject *py_value;
+  PyObject *ret;
+  PyGILState_STATE state;
+
+  tuple = (PyObject*) user_data;
+
+  state = pyg_gil_state_ensure ();
+
+  g_assert (PyTuple_Check (tuple));
+  func = PyTuple_GetItem (tuple, 0);
+
+  if (PyTuple_Size (tuple) > 1)
+  {
+    userdata = PyTuple_GetItem (tuple, 1);
+  }
+
+  py_value = pyg_value_as_pyobject (value, TRUE);
+
+  if (userdata)
+  {
+    ret = PyObject_CallFunction (func, "ssOO", group, key, py_value, userdata);
+  }
+  else
+  {
+    ret = PyObject_CallFunction (func, "ssO", group, key, py_value);
+  }
+
+  Py_DECREF (py_value);
+
+  if (ret == NULL)
+  {
+    PyErr_Print ();
+  }
+  else
+  {
+    Py_DECREF (ret);
+  }
+
+  pyg_gil_state_release (state);
+}
+
+static PyObject *
+_wrap_desktop_agnostic_config_client_notify_add (PyGObject *self,
+                                                 PyObject *args,
+                                                 PyObject *kwargs)
+{
+  static char *kwlist[] = { "group", "key", "func", "user_data", NULL };
+  gchar *group;
+  gchar *key;
+  PyObject *callback;
+  PyObject *extra = NULL;
+  PyObject *data;
+  GError *error = NULL;
+  NotifyData *ndata;
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "ssO|O:desktopagnostic.config.Client.notify_add",
+                                    kwlist, &group, &key, &callback, &extra))
+  {
+    return NULL;
+  }
+
+  if (!PyCallable_Check (callback))
+  {
+    PyErr_SetString (PyExc_TypeError, "Third argument not callable");
+    return NULL;
+  }
+
+  if (extra)
+  {
+    data = Py_BuildValue ("(OO)", callback, extra);
+  }
+  else
+  {
+    data = Py_BuildValue ("(O)", callback);
+  }
+
+  desktop_agnostic_config_client_notify_add (DESKTOP_AGNOSTIC_CONFIG_CLIENT (self->obj),
+                                             group, key,
+                                             pydesktopagnostic_config_client_notify_add,
+                                             data, &error);
+
+  if (pyg_error_check (&error))
+  {
+    return NULL;
+  }
+
+  // to properly support notify_remove we need a global list of all
+  //  added notifications
+
+  ndata = g_slice_new0 (NotifyData);
+  ndata->group = g_strdup (group);
+  ndata->key = g_strdup (key);
+  ndata->data_tuple = data;
+  g_lda_notifications = g_list_append (g_lda_notifications, ndata);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}
+%%
+override desktop_agnostic_config_client_notify_remove kwargs
+static PyObject *
+_wrap_desktop_agnostic_config_client_notify_remove (PyGObject *self,
+                                                    PyObject *args,
+                                                    PyObject *kwargs)
+{
+  static char *kwlist[] = { "group", "key", "func", "user_data", NULL };
+  gchar *group;
+  gchar *key;
+  PyObject *callback;
+  PyObject *extra = NULL;
+  GError *error = NULL;
+  NotifyData *ndata = NULL;
+
+  if (!PyArg_ParseTupleAndKeywords (args, kwargs,
+                                    "ssO|O:desktopagnostic.config.Client.notify_remove",
+                                    kwlist, &group, &key, &callback, &extra))
+  {
+    return NULL;
+  }
+
+  ndata = pydesktopagnostic_notifications_find (group, key, callback, extra);
+  if (ndata == NULL)
+  {
+    PyErr_SetString (PyExc_TypeError,
+                     "Unable to remove this callback and data pair!");
+    return NULL;
+  }
+
+  desktop_agnostic_config_client_notify_remove (DESKTOP_AGNOSTIC_CONFIG_CLIENT (self->obj),
+                                                group, key,
+                                                pydesktopagnostic_config_client_notify_add,
+                                                ndata->data_tuple, &error);
+
+  if (pyg_error_check (&error))
+  {
+    return NULL;
+  }
+
+  g_free (ndata->group);
+  g_free (ndata->key);
+  Py_DECREF ((PyObject *)ndata->data_tuple);
+
+  g_lda_notifications = g_list_remove (g_lda_notifications, ndata);
+  g_slice_free (NotifyData, ndata);
+
+  Py_INCREF (Py_None);
+  return Py_None;
+}

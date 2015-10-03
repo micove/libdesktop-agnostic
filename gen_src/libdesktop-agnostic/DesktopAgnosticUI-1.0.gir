@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<repository version="1.0" xmlns="http://www.gtk.org/introspection/core/1.0" xmlns:c="http://www.gtk.org/introspection/c/1.0" xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
+<package name="desktop-agnostic-ui"/>
+<c:include name="libdesktop-agnostic/desktop-agnostic.h"/>
+<namespace name="DesktopAgnosticUI" version="1.0" c:prefix="DesktopAgnostic">
+	<annotation key="ccode.lower-case-cprefix" value="desktop_agnostic_"/>
+	<annotation key="ccode.gir-version" value="1.0"/>
+	<annotation key="ccode.gir-namespace" value="DesktopAgnosticFDO"/>
+	<annotation key="ccode.cprefix" value="DesktopAgnostic"/>
+</namespace>
+</repository>

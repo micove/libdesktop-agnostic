@@ -1,0 +1,32 @@
+#!/usr/bin/python
+# encoding: utf-8
+
+NEEDS_GDK = ['test-desktop-entry', 'test-vfs-file']
+
+
+def build_test_program(bld, name, suffix):
+    test = bld.new_task_gen('cc', 'program')
+    test.source = name + '.vala'
+    if name in NEEDS_GDK:
+        test.packages = 'gdk-2.0'
+        test.uselib = 'GDK'
+    if suffix == '':
+        test.uselib_local = 'desktop-agnostic'
+    else:
+        test.uselib_local = 'desktop-agnostic-%s' % suffix
+    test.vapi_dirs = '../libdesktop-agnostic'
+    test.includes = '..'
+    test.target = name
+    test.install_path = ''
+
+
+def build(bld):
+    [build_test_program(bld, 'test-' + name, 'cfg')
+     for name in ['color', 'config', 'config-bridge']]
+    [build_test_program(bld, 'test-' + name, 'fdo')
+     for name in ['desktop-entry']]
+    [build_test_program(bld, 'test-' + name, 'vfs')
+     for name in ['vfs-bookmarks-gtk', 'vfs-file', 'vfs-file-monitor',
+                  'vfs-glob', 'vfs-trash', 'vfs-volume']]
+    [build_test_program(bld, 'test-' + name, 'ui')
+     for name in ['ui-color-button', 'ui-color-button-gtkbuilder']]

@@ -1,0 +1,31 @@
+[group/string]
+type = string
+default = foo
+description = some string.
+
+[group/number]
+type = integer
+default = 10
+description = some number.
+
+[group/decimal]
+type = float
+default = 3.14
+description = some decimal.
+
+[group/tf]
+type = boolean
+default = true
+description = some boolean.
+
+[group/array]
+type = list-string
+default = [a,b,c]
+description = some array.
+
+[group/enum]
+type = integer
+default = 1
+description = some enumeration.
+
+# vim: set ft=cfg :
