@@ -9,7 +9,6 @@ Build-Depends:
  libdbus-glib-1-dev,
  libgconf2-dev,
  libgirepository1.0-dev (>= 0.6.3),
- libgladeui-1-dev,
  libglib2.0-dev (>= 2.18.0),
  libgnome-desktop-dev,
  libgtk2.0-dev,
@@ -172,8 +171,6 @@ Depends:
  libgtk2.0-dev,
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests:
- glade (>= 3) | glade-3
 Replaces:
  vala-desktop-agnostic
 Conflicts:
