@@ -5,7 +5,6 @@ Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends:
  debhelper (>= 9~),
  dh-python,
- gobject-introspection,
  intltool,
  libdbus-glib-1-dev,
  libgconf2-dev,
