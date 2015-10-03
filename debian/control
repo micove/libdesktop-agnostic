@@ -17,7 +17,7 @@ Build-Depends:
  python-gobject-dev,
  python-gtk2-dev,
  python-sphinx,
- valac-0.14 | valac
+ valac-0.28 | valac
 Standards-Version: 3.9.6
 X-Python-Version: >= 2.6
 Homepage: https://launchpad.net/libdesktop-agnostic
