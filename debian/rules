@@ -13,7 +13,7 @@ CONFIGURE_FLAGS = \
 	--enable-debug \
 	--config-backends=gconf,keyfile \
 	--vfs-backends=gio \
-	--desktop-entry-backends=glib,gnome,gio \
+	--desktop-entry-backends=glib,gio \
 	--enable-docs
 
 override_dh_auto_configure:

@@ -11,7 +11,6 @@ Build-Depends:
  libgconf2-dev,
  libgirepository1.0-dev,
  libglib2.0-dev,
- libgnome-desktop-dev,
  libgtk2.0-dev,
  python-dev (>= 2.6.6-3~),
  python-gobject-dev,
@@ -99,22 +98,6 @@ Description: Keyfile-based configuration module for libdesktop-agnostic
  there are desktop-specific modules.
  .
  This package contains the keyfile-based configuration module.
-
-Package: libdesktop-agnostic-fdo-gnome
-Architecture: any
-Depends:
- libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Provides:
- libdesktop-agnostic-fdo
-Description: GNOME-based desktop entry/menu module for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the GNOME-based desktop entry/menu module.
 
 Package: libdesktop-agnostic-fdo-glib
 Architecture: any
