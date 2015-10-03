@@ -39,3 +39,8 @@ override_dh_auto_clean:
 	./waf --nocache distclean
 	find wafadmin -name "*.pyc" -delete
 	rm -f configure	# so dh_auto_configure doesn't try to use this broken fallback
+
+get-orig-source:
+	sh debian/get-git-source.sh
+
+.PHONY: get-orig-source
