@@ -3,7 +3,7 @@ Section: libs
 Priority: extra
 Maintainer: Julien Lavergne <julien.lavergne@gmail.com>
 Build-Depends:
- debhelper (>= 7.0.50~),
+ debhelper (>= 9~),
  gobject-introspection (>= 0.6.3),
  intltool,
  libdbus-glib-1-dev,
