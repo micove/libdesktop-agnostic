@@ -4,6 +4,7 @@ Priority: extra
 Maintainer: Julien Lavergne <julien.lavergne@gmail.com>
 Build-Depends:
  debhelper (>= 9~),
+ dh-python,
  gobject-introspection (>= 0.6.3),
  intltool,
  libdbus-glib-1-dev,
@@ -12,13 +13,13 @@ Build-Depends:
  libglib2.0-dev (>= 2.18.0),
  libgnome-desktop-dev,
  libgtk2.0-dev,
- python (>= 2.6.6-3~),
  python-dev (>= 2.6.6-3~),
  python-gobject-dev (>= 2.12),
  python-gtk2-dev (>= 2.12),
  python-sphinx (>= 1.0.7+dfsg),
  valac-0.14 (>= 0.14.0) | valac
 Standards-Version: 3.9.6
+X-Python-Version: >= 2.6
 Homepage: https://launchpad.net/libdesktop-agnostic
 
 Package: libdesktop-agnostic0
@@ -222,7 +223,6 @@ Depends:
  ${misc:Depends},
  ${python:Depends},
  ${shlibs:Depends}
-XB-Python-Version: ${python:Versions}
 Description: Python bindings for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
