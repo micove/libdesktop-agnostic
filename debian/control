@@ -21,7 +21,6 @@ Build-Depends:
  valac-0.14 (>= 0.14.0) | valac
 Standards-Version: 3.9.6
 Homepage: https://launchpad.net/libdesktop-agnostic
-DM-Upload-Allowed: yes
 
 Package: libdesktop-agnostic0
 Architecture: any
