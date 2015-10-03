@@ -3,12 +3,9 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-#Workaround a segfault on amd64 when optimization are O2
-ifeq (amd64,$(shell dpkg-architecture -qDEB_HOST_ARCH))
-	CFLAGS += -O0
-else
-	CFLAGS += -O2
-endif
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+LDFLAGS += -Wl,--as-needed
 
 CONFIGURE_FLAGS = \
 	--prefix=/usr \
@@ -20,7 +17,7 @@ CONFIGURE_FLAGS = \
 	--enable-docs
 
 override_dh_auto_configure:
-	LINKFLAGS="${LDFLAGS} -Wl,--as-needed" ./waf --nocache configure $(CONFIGURE_FLAGS)
+	LINKFLAGS="${LDFLAGS}" ./waf --nocache configure $(CONFIGURE_FLAGS)
 
 override_dh_auto_build:
 	./waf --nocache build
