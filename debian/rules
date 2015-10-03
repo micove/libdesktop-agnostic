@@ -32,10 +32,9 @@ override_dh_strip:
 	dh_strip --dbg-package=libdesktop-agnostic0-dbg
 
 override_dh_auto_clean:
-	rm -rf build sphinx.pyc
 	./waf --nocache distclean
+	rm -rf build sphinx.pyc
 	find wafadmin -name "*.pyc" -delete
-	rm -f configure	# so dh_auto_configure doesn't try to use this broken fallback
 
 %:
 	dh $@ --parallel --with sphinxdoc,python2
