@@ -20,7 +20,7 @@ override_dh_auto_configure:
 	LINKFLAGS="${LDFLAGS}" ./waf --nocache configure $(CONFIGURE_FLAGS)
 
 override_dh_auto_build:
-	./waf --nocache build
+	./waf --nocache -vv build
 
 override_dh_auto_install:
 	./waf --nocache install --destdir=$(CURDIR)/debian/tmp
