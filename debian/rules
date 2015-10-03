@@ -9,6 +9,7 @@ endif
 
 CONFIGURE_FLAGS = \
 	--prefix=/usr \
+	--sysconfdir=/etc \
 	--enable-debug \
 	--config-backends=gconf,keyfile \
 	--vfs-backends=gio \
