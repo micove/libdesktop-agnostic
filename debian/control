@@ -153,8 +153,7 @@ Section: debug
 Architecture: any
 Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
+ ${misc:Depends}
 Description: Debugging symbols for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
@@ -170,8 +169,7 @@ Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
  libglib2.0-dev,
  libgtk2.0-dev,
- ${misc:Depends},
- ${shlibs:Depends}
+ ${misc:Depends}
 Replaces:
  vala-desktop-agnostic
 Conflicts:
@@ -189,7 +187,6 @@ Architecture: all
 Section: doc
 Depends:
  ${misc:Depends},
- ${shlibs:Depends},
  ${sphinxdoc:Depends}
 Description: Documentation for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
