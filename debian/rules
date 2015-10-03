@@ -7,13 +7,16 @@ else
 	CFLAGS += -O2
 endif
 
-override_dh_auto_configure:
-	LINKFLAGS="${LDFLAGS} -Wl,--as-needed" ./waf --nocache configure --prefix=/usr \
+CONFIGURE_FLAGS = \
+	--prefix=/usr \
 	--enable-debug \
 	--config-backends=gconf,keyfile \
 	--vfs-backends=gio \
 	--desktop-entry-backends=glib,gnome,gio \
 	--enable-docs
+
+override_dh_auto_configure:
+	LINKFLAGS="${LDFLAGS} -Wl,--as-needed" ./waf --nocache configure $(CONFIGURE_FLAGS)
 
 override_dh_auto_build:
 	./waf --nocache build
