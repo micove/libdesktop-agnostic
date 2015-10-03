@@ -26,10 +26,6 @@ Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests:
- libdesktop-agnostic-cfg,
- libdesktop-agnostic-fdo,
- libdesktop-agnostic-vfs
 Description: Desktop-agnostic library for GLib-based projects
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
@@ -37,48 +33,6 @@ Description: Desktop-agnostic library for GLib-based projects
  there are desktop-specific modules.
  .
  This package contains the core library.
-
-Package: libdesktop-agnostic-vfs
-Architecture: any
-Depends:
- libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Description: VFS modules for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the VFS modules.
-
-Package: libdesktop-agnostic-cfg
-Architecture: any
-Depends:
- libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Description: Configuration modules for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the configuration modules.
-
-Package: libdesktop-agnostic-fdo
-Architecture: any
-Depends:
- libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Description: Desktop entry/menu modules for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the desktop entry/menu modules.
 
 Package: libdesktop-agnostic0-dbg
 Section: debug
@@ -131,7 +85,6 @@ Description: Documentation for libdesktop-agnostic
 Package: libdesktop-agnostic-bin
 Architecture: any
 Depends:
- libdesktop-agnostic-cfg,
  libdesktop-agnostic0 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
