@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
 #Workaround a segfault on amd64 when optimization are O2
 ifeq (amd64,$(shell dpkg-architecture -qDEB_HOST_ARCH))
 	CFLAGS += -O0
