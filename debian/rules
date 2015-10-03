@@ -15,6 +15,8 @@ override_dh_auto_configure:
 	--desktop-entry-backends=glib,gnome,gio \
 	--with-glade \
 	--enable-docs
+
+override_dh_auto_build:
 	./waf --nocache build
 
 override_dh_auto_install:
