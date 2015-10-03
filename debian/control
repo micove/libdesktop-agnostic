@@ -23,6 +23,9 @@ Homepage: https://launchpad.net/libdesktop-agnostic
 
 Package: libdesktop-agnostic0
 Architecture: any
+Multi-Arch: same
+Pre-Depends:
+ ${misc:Pre-Depends}
 Depends:
  ${misc:Depends},
  ${shlibs:Depends}
@@ -37,6 +40,7 @@ Description: Desktop-agnostic library for GLib-based projects
 Package: libdesktop-agnostic0-dbg
 Section: debug
 Architecture: any
+Multi-Arch: same
 Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
  ${misc:Depends}
@@ -51,6 +55,7 @@ Description: Debugging symbols for libdesktop-agnostic
 Package: libdesktop-agnostic-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
  libglib2.0-dev,
@@ -100,6 +105,7 @@ Description: Helper applications for libdesktop-agnostic
 Package: python-desktop-agnostic
 Section: python
 Architecture: any
+Multi-Arch: same
 Depends:
  libdesktop-agnostic0 (>= ${binary:Version}),
  ${misc:Depends},
