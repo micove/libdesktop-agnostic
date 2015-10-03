@@ -1,11 +1,12 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libdesktop-agnostic
-Upstream-Contact: Mark Lee <libdesktop-agnostic@lazymalevolence.com>
-Source: https://launchpad.net/libdesktop-agnostic
+Upstream-Contact: Povilas Kanapickas <povilas@radix.lt>
+Source: https://github.com/p12tic/libdesktop-agnostic
 
 Files: *
 Copyright: 2008-2009, Mark Lee <libdesktop-agnostic@lazymalevolence.com>
-           2010, Michal Hruby <michal.mhr@gmail.com>
+           2010-2011, Michal Hruby <michal.mhr@gmail.com>
+           2013, Povilas Kanapickas <povilas@radix.lt>
 License: LGPL-2.1+
 
 Files:

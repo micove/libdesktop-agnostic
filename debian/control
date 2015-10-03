@@ -19,7 +19,7 @@ Build-Depends:
  valac-0.28 | valac
 Standards-Version: 3.9.6
 X-Python-Version: >= 2.6
-Homepage: https://launchpad.net/libdesktop-agnostic
+Homepage: https://github.com/p12tic/libdesktop-agnostic
 
 Package: libdesktop-agnostic0
 Architecture: any
