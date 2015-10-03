@@ -126,7 +126,7 @@ namespace DesktopAgnostic.UI
     }
 
     private void
-    add_icon_viewer (ref IconView viewer, bool themed)
+    add_icon_viewer (out IconView viewer, bool themed)
     {
       ScrolledWindow scrolled;
 
@@ -165,7 +165,7 @@ namespace DesktopAgnostic.UI
       {
         TreeIter iter;
         Value val;
-        var store = this._viewer.model as ListStore;
+        var store = this._viewer.model as Gtk.ListStore;
         store.get_iter (out iter, p);
         store.get_value (iter, Column.DATA, out val);
 
@@ -205,11 +205,11 @@ namespace DesktopAgnostic.UI
       return viewer;
     }
 
-    private ListStore
+    private Gtk.ListStore
     create_model ()
     {
       // icon, name, data
-      return new ListStore (Column.COUNT,
+      return new Gtk.ListStore (Column.COUNT,
                             typeof (Gdk.Pixbuf),
                             typeof (string),
                             typeof (string),
@@ -231,7 +231,7 @@ namespace DesktopAgnostic.UI
           this._themed_context.changed.connect (this.on_icon_context_changed);
           this.vbox.pack_start (this._themed_context, false, false, 5);
 
-          this.add_icon_viewer (ref this._themed_viewer, true);
+          this.add_icon_viewer (out this._themed_viewer, true);
 
           icon_theme = IconTheme.get_default ();
           context_list = icon_theme.list_contexts ();
@@ -272,7 +272,7 @@ namespace DesktopAgnostic.UI
           this.vbox.pack_start (this._directory, false, false, 5);
           this._directory.show ();
 
-          this.add_icon_viewer (ref this._file_viewer, false);
+          this.add_icon_viewer (out this._file_viewer, false);
 
           this.on_folder_changed (this._directory);
         }
@@ -291,12 +291,12 @@ namespace DesktopAgnostic.UI
     private void
     on_folder_changed (FileChooser chooser)
     {
-      unowned ListStore model;
+      unowned Gtk.ListStore model;
       string uri;
       VFS.File directory;
       SList<VFS.File> children;
 
-      model = this._file_viewer.model as ListStore;
+      model = this._file_viewer.model as Gtk.ListStore;
       model.clear ();
 
       uri = chooser.get_uri ();
@@ -342,11 +342,11 @@ namespace DesktopAgnostic.UI
     private void
     on_icon_context_changed (ComboBox box)
     {
-      unowned ListStore model;
+      unowned Gtk.ListStore model;
       unowned IconTheme icon_theme;
       List<string> icon_list;
 
-      model = this._themed_viewer.model as ListStore;
+      model = this._themed_viewer.model as Gtk.ListStore;
       model.clear ();
 
       icon_theme = IconTheme.get_default ();
