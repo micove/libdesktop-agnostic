@@ -52,37 +52,19 @@ Description: VFS modules for libdesktop-agnostic
  .
  This package contains the VFS modules.
 
-Package: libdesktop-agnostic-cfg-gconf
+Package: libdesktop-agnostic-cfg
 Architecture: any
 Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
-Provides:
- libdesktop-agnostic-cfg
-Description: GConf-based configuration module for libdesktop-agnostic
+Description: Configuration modules for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
  GLib-based projects. It is not tied to any one desktop environment, although
  there are desktop-specific modules.
  .
- This package contains the GConf module.
-
-Package: libdesktop-agnostic-cfg-keyfile
-Architecture: any
-Depends:
- libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Provides:
- libdesktop-agnostic-cfg
-Description: Keyfile-based configuration module for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the keyfile-based configuration module.
+ This package contains the configuration modules.
 
 Package: libdesktop-agnostic-fdo-glib
 Architecture: any
@@ -167,7 +149,7 @@ Description: Documentation for libdesktop-agnostic
 Package: libdesktop-agnostic-bin
 Architecture: any
 Depends:
- libdesktop-agnostic-cfg-gconf,
+ libdesktop-agnostic-cfg,
  libdesktop-agnostic0 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
