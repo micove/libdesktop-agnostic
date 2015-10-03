@@ -66,37 +66,19 @@ Description: Configuration modules for libdesktop-agnostic
  .
  This package contains the configuration modules.
 
-Package: libdesktop-agnostic-fdo-glib
+Package: libdesktop-agnostic-fdo
 Architecture: any
 Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
-Provides:
- libdesktop-agnostic-fdo
-Description: GLib-based desktop entry/menu module for libdesktop-agnostic
+Description: Desktop entry/menu modules for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
  GLib-based projects. It is not tied to any one desktop environment, although
  there are desktop-specific modules.
  .
- This package contains the GLib-based desktop entry/menu module.
-
-Package: libdesktop-agnostic-fdo-gio
-Architecture: any
-Depends:
- libdesktop-agnostic0 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Provides:
- libdesktop-agnostic-fdo
-Description: GIO-based desktop entry/menu module for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the GIO-based desktop entry/menu module.
+ This package contains the desktop entry/menu modules.
 
 Package: libdesktop-agnostic0-dbg
 Section: debug
