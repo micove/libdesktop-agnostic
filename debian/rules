@@ -7,9 +7,6 @@ else
 	CFLAGS += -O2
 endif
 
-%:
-	dh --with sphinxdoc --with python2 $@
-
 override_dh_auto_configure:
 	LINKFLAGS="${LDFLAGS} -Wl,--as-needed" ./waf --nocache configure --prefix=/usr \
 	--enable-debug \
@@ -34,6 +31,9 @@ override_dh_auto_clean:
 	./waf --nocache distclean
 	find wafadmin -name "*.pyc" -delete
 	rm -f configure	# so dh_auto_configure doesn't try to use this broken fallback
+
+%:
+	dh $@ --parallel --with sphinxdoc,python2
 
 get-orig-source:
 	sh debian/get-git-source.sh
