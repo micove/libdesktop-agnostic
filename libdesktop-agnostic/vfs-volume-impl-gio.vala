@@ -27,6 +27,7 @@ namespace DesktopAgnostic.VFS
   public class VolumeGIO : Object, Volume
   {
     private GLib.Volume vol;
+    private string? _name;
     public GLib.Volume implementation
     {
       construct
@@ -36,9 +37,11 @@ namespace DesktopAgnostic.VFS
     }
     public string name
     {
-      get
+      owned get
       {
-        return this.vol.get_name ();
+        if (_name == null)
+            _name = (string)this.vol.get_name ();
+        return _name;
       }
     }
     private File _uri;
@@ -142,7 +145,7 @@ namespace DesktopAgnostic.VFS
     {
       if (this._unmount_callback == null)
       {
-        unowned Mount? mount;
+        Mount? mount;
         this._unmount_callback = callback;
         mount = this.vol.get_mount ();
         if (mount != null)
@@ -217,10 +220,10 @@ namespace DesktopAgnostic.VFS
         VFS.Volume vol = this.create_volume (gvol);
         this._volumes.insert (gvol, vol);
       }
-      this.monitor.mount_added += this.on_mount_added;
-      this.monitor.mount_removed += this.on_mount_removed;
-      this.monitor.volume_added += this.on_volume_added;
-      this.monitor.volume_removed += this.on_volume_removed;
+      this.monitor.mount_added.connect(this.on_mount_added);
+      this.monitor.mount_removed.connect(this.on_mount_removed);
+      this.monitor.volume_added.connect(this.on_volume_added);
+      this.monitor.volume_removed.connect(this.on_volume_removed);
     }
     private VFS.Volume
     create_volume (GLib.Volume vol)
