@@ -19,7 +19,7 @@ Build-Depends:
  python-gtk2-dev (>= 2.12),
  python-sphinx (>= 1.0.7+dfsg),
  valac-0.14 (>= 0.14.0) | valac
-Standards-Version: 3.9.3
+Standards-Version: 3.9.6
 Homepage: https://launchpad.net/libdesktop-agnostic
 DM-Upload-Allowed: yes
 
