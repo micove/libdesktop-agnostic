@@ -38,21 +38,19 @@ Description: Desktop-agnostic library for GLib-based projects
  .
  This package contains the core library.
 
-Package: libdesktop-agnostic-vfs-gio
+Package: libdesktop-agnostic-vfs
 Architecture: any
 Depends:
  libdesktop-agnostic0 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
-Provides:
- libdesktop-agnostic-vfs
-Description: GIO-based VFS module for libdesktop-agnostic
+Description: VFS modules for libdesktop-agnostic
  This library provides an extensible configuration API, a unified virtual file
  system API, and a desktop item editor (all with pluggable backends) for
  GLib-based projects. It is not tied to any one desktop environment, although
  there are desktop-specific modules.
  .
- This package contains the GIO module.
+ This package contains the VFS modules.
 
 Package: libdesktop-agnostic-cfg-gconf
 Architecture: any
