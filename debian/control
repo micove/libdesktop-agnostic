@@ -24,7 +24,6 @@ Homepage: https://launchpad.net/libdesktop-agnostic
 Package: libdesktop-agnostic0
 Architecture: any
 Depends:
- libdesktop-agnostic-data (>= ${source:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Suggests:
@@ -38,18 +37,6 @@ Description: Desktop-agnostic library for GLib-based projects
  there are desktop-specific modules.
  .
  This package contains the core library.
-
-Package: libdesktop-agnostic-data
-Architecture: any
-Depends:
- ${misc:Depends}
-Description: Locales and data for libdesktop-agnostic
- This library provides an extensible configuration API, a unified virtual file
- system API, and a desktop item editor (all with pluggable backends) for
- GLib-based projects. It is not tied to any one desktop environment, although
- there are desktop-specific modules.
- .
- This package contains the locales for libdesktop-agnostic.
 
 Package: libdesktop-agnostic-vfs-gio
 Architecture: any
