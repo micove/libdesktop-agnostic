@@ -23,6 +23,7 @@ override_dh_auto_configure:
 	LINKFLAGS="${LDFLAGS}" ./waf --nocache configure $(CONFIGURE_FLAGS)
 
 override_dh_auto_build:
+	mkdir -p docs/_static/
 	./waf --nocache -vv build
 
 override_dh_auto_install:

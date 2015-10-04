@@ -5,5 +5,5 @@ Abstract: Libdesktop-agnostic provides an extensible configuration API, a unifie
 Section: Programming/Vala
 
 Format: HTML
-Index: /usr/share/doc/libdesktop-agnostic/index.html
-Files: /usr/share/doc/libdesktop-agnostic/*.html
+Index: /usr/share/doc/libdesktop-agnostic-doc/libdesktop-agnostic/index.html
+Files: /usr/share/doc/libdesktop-agnostic-doc/libdesktop-agnostic/*.html
