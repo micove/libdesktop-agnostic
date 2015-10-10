@@ -1,11 +1,39 @@
-libdesktop-agnostic (0.3.94-2-g83a5ab1-0.1~local1) UNRELEASED; urgency=medium
+libdesktop-agnostic (0.3.94-2-g83a5ab1-0~github1) UNRELEASED; urgency=medium
 
-  * Non-maintainer upload.
+  * QA upload.
   * New upstream snapshot.
+  * Bump the debhelper version and compatibility level to 9.
+  * Bump Standards-Version to 3.9.6.
+  * debian/control:
+    - Remove deprecated DM-Upload-Allowed field.
+    - Drop useless versioning in the build-dependencies.
+    - Bump the required valac version.
+    - Drop useless ${shlibs:Depends}.
+    - Relax Conflicts to Breaks.
+    - Merge all modules into the library package.
+    - Drop the GNOME-based desktop entry/menu module. Deprecated.
+    - Orphan the package.
+    - Drop the intltool B-D to avoid building the piglatin locale. Remove the
+      data package since this was the only locale provided.
   * debian/rules:
     - Add a get-orig-source target.
+    - Use dh $@ --foo as required since compat 8.
+    - Allow parallel builds.
+    - Don't configure and build the source twice due to the new Makefile.
+    - Drop glade support since libgladeui-1-dev is not available.
+    - Set the --sysconfdir flag.
+    - Use the FLAGS from dpkg-buildflags.
+    - Enable waf verbosity.
+  * Add multi-arch support.
+  * Fix errors when building the documentation.
+  * Fix issues found by lintian in the copyright file.
+  * Update the package according to the latest Python policy.
+  * Remove obsolete README.Debian.
+  * Update the watch file.
+  * Update upstream's information.
+  * Add a patch to solve various issues with the Keyfile configuration backend.
 
- -- Miguel A. Colón Vélez <debian.micove@gmail.com>  Sat, 03 Oct 2015 11:33:09 -0400
+ -- Miguel A. Colón Vélez <debian.micove@gmail.com>  Sat, 10 Oct 2015 02:50:04 -0400
 
 libdesktop-agnostic (0.3.92+dfsg-1) unstable; urgency=low
 
