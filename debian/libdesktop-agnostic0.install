@@ -1,4 +1,3 @@
 etc/xdg
 usr/lib/*/desktop-agnostic/modules/
 usr/lib/*/lib*.so.*
-usr/share/locale/
