@@ -1,4 +1,4 @@
-libdesktop-agnostic (0.3.94-2-g83a5ab1-0~github1) UNRELEASED; urgency=medium
+libdesktop-agnostic (0.3.94-10-g4d9b6fd-0~github1) UNRELEASED; urgency=medium
 
   * QA upload.
   * New upstream snapshot.
@@ -31,7 +31,6 @@ libdesktop-agnostic (0.3.94-2-g83a5ab1-0~github1) UNRELEASED; urgency=medium
   * Remove obsolete README.Debian.
   * Update the watch file.
   * Update upstream's information.
-  * Add a patch to solve various issues with the Keyfile configuration backend.
 
  -- Miguel A. Colón Vélez <debian.micove@gmail.com>  Sat, 10 Oct 2015 02:50:04 -0400
 
